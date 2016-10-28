@@ -101,7 +101,8 @@ function update() {
     else
     {
         //  Stand still
-        player.animations.play('stand');
+        player.animations.stop();
+				player.frame=2;
     }
 
     //  Allow the player to jump if they are touching the ground.
