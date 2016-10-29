@@ -34,11 +34,11 @@ function create() {
 
 		game.add.sprite(0, 0, 'map');
 
-		map = game.add.tilemap('tilemap');
+		//map = game.add.tilemap('tilemap');
 
-		layer = map.createLayer(0);
-		layer.resizeWorld();
-		map.setCollisionBetween(1, 12);
+		//layer = map.createLayer(0);
+	//	layer.resizeWorld();
+	//	map.setCollisionBetween(1, 12);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -50,7 +50,7 @@ function create() {
     //  Player physics properties. Give the little guy a slight bounce.
     player.body.bounce.y = 0.2;
     player.body.gravity.y = 300;
-    //player.body.collideWorldBounds = true;
+    player.body.collideWorldBounds = true;
 
     //  Our two animations, walking left and right.
 
@@ -80,7 +80,7 @@ function gofull(){
 function update() {
 
     //  Collide the player and the stars with the platforms
-    game.physics.arcade.collide(player, layer);
+    //game.physics.arcade.collide(player, layer);
 
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
