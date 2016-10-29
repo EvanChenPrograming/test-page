@@ -20,7 +20,7 @@ function preload() {
 
     game.load.tilemap('map', 'assets/map.json');
 		game.load.image('tiles','assets/2.png');
-		//game.load.image('backgrouns','assets/IIMfront.png');
+		game.load.image('backgrounds','assets/IIMfront.png');
 		game.load.image('campusItem','assets/campus.png');
     game.load.spritesheet('dude', 'assets/org_h01.png', 32, 32);
 
@@ -35,7 +35,7 @@ function create() {
 
 		map = game.add.tilemap('map');
     map.addTilesetImage('2', 'tiles');
-    map.addTilesetImage('IIMfront', 'backgrouns');
+    map.addTilesetImage('IIMfront', 'backgrounds');
     map.addTilesetImage('campus', 'campusItem');
 
 		layer = map.createLayer(0);
