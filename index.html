@@ -19,7 +19,9 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create
 function preload() {
 
     game.load.tilemap('map', 'assets/map.json');
-		game.load.image('mapPix','assets/map1.png');
+		game.load.image('tiles','assets/2.png');
+		game.load.image('backgrouns','assets/IIMfront.png');
+		game.load.image('campusItem','assets/campus.png');
     game.load.spritesheet('dude', 'assets/org_h01.png', 32, 32);
 
 }
@@ -32,7 +34,9 @@ var layer;
 function create() {
 
 		map = game.add.tilemap('map');
-		map.addTilesetImage('mapPix');
+    map.addTilesetImage('2', 'tiles');
+    map.addTilesetImage('IIMfront', 'backgrouns');
+    map.addTilesetImage('campus', 'campusItem');
 
 		layer = map.createLayer(0);
 		layer.resizeWorld();
