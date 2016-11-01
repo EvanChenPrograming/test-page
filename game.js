@@ -81,12 +81,12 @@ landingPage.Game.prototype ={
   update: function(){
     this.game.physics.arcade.collide(this.sprite, this.objectlayer);
 
-    if (cursors.left.isDown)
+    if (this.cursors.left.isDown)
     {
         this.sprite.body.velocity.x = -150;
         this.sprite.animations.play('left');
     }
-    else if (cursors.right.isDown)
+    else if (this.cursors.right.isDown)
     {
         this.sprite.body.velocity.x = 150;
         this.sprite.animations.play('right');
