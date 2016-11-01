@@ -1,9 +1,10 @@
 
-
 var landingPage = landingPage || {};
 
-
-landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
+landingPage.Boot = function(){};
+landingPage.Preload = function(){};
+landingPage.Menu = function(){};
+landingPage.inGame = function(){};
 
 landingPage.Boot.prototype = {
   preload: function(){
@@ -49,6 +50,8 @@ landingPage.Menu.prototype ={
   create: function(){
     this.tree = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'tree');
     this.tree.anchor.setTo(0.5);
+    this.tree.scale.x = 800;
+    this.tree.scale.y = 534;
     this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'explore', onClicked, this);
   },
   onClicked: function(){
@@ -68,6 +71,8 @@ landingPage.inGame.prototype ={
   }*/
 }
 
+
+landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
 landingPage.game.state.add('Boot', landingPage.Boot);
 landingPage.game.state.add('Preload', landingPage.Preload);
