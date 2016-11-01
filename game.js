@@ -56,7 +56,7 @@ landingPage.Menu.prototype ={
     this.tree.anchor.setTo(0.5);
     this.tree.scale.x = 800;
     this.tree.scale.y = 534;
-    this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'explore', onClicked, this);
+    this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'explore', this.onClicked, this);
   }
 };
 
