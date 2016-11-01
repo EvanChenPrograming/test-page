@@ -8,7 +8,7 @@ landingPage.inGame = function(){};
 
 landingPage.Boot.prototype = {
   preload: function(){
-    this.load.image('icon', 'assets/icon.jpg');
+    this.load.image('icon', 'assets/icon.png');
     this.load.image('loadbar', 'assets/preloader-bar.png');
   },
   create: function(){
