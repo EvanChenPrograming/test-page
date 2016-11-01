@@ -22,6 +22,7 @@ landingPage.Preload.prototype = {
   preload: function(){
   	this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'icon');
     this.splash.anchor.setTo(0.5);
+    this.splash.scale.setTo(0.7, 0.7);
     this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 128, 'loadbar');
     this.preloadBar.anchor.setTo(0.5);
     this.load.setPreloadSprite(this.preloadBar);
@@ -45,8 +46,7 @@ landingPage.Preload.prototype = {
 };
 landingPage.Menu.prototype ={
   onClicked: function(){
-    alert('clicked');
-    this.state.start('inGame');
+    this.state.start('Game');
   },
   create: function(){
     this.tree = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'tree');
