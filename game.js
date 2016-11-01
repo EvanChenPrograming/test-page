@@ -66,6 +66,14 @@ landingPage.Game.prototype ={
     this.objectlayer = this.map.createLayer('objects');
     this.stairs = this.map.createLayer('stairs');
 
+    this.sprite = this.game.add.sprite(100, 300,'sprite');
+    this.game.physics.arcade.enable(this.sprite);
+    this.sprite.body.gravity.y = 300;
+    this.sprite.body.collideWorldBounds = true;
+
+    this.sprite.animations.add('left', [4, 5, 6], 8, true);
+    this.sprite.animations.add('right', [7, 8, 9], 8, true);
+
 
 
   },
@@ -77,6 +85,6 @@ landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 landingPage.game.state.add('Boot', landingPage.Boot);
 landingPage.game.state.add('Preload', landingPage.Preload);
 landingPage.game.state.add('Menu', landingPage.Menu);
-landingPage.game.state.add('Game', landingPage.inGame);
+landingPage.game.state.add('Game', landingPage.Game);
 
 landingPage.game.state.start('Boot');
