@@ -2,6 +2,9 @@
 
 var landingPage = landingPage || {};
 
+
+landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
+
 landingPage.Boot.prototype = {
   preload: function(){
     this.load.image('icon', 'assets/icon.jpg');
@@ -65,8 +68,6 @@ landingPage.inGame.prototype ={
   }*/
 }
 
-
-landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
 landingPage.game.state.add('Boot', landingPage.Boot);
 landingPage.game.state.add('Preload', landingPage.Preload);
