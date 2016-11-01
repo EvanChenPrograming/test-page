@@ -6,19 +6,22 @@ landingPage.Preload = function(){};
 landingPage.Menu = function(){};
 landingPage.inGame = function(){};
 
+var bgm;
+
 landingPage.Boot.prototype = {
   preload: function(){
     this.load.image('icon', 'assets/icon.png');
     this.load.image('loadbar', 'assets/preloader-bar.png');
+    this.load.audio('bgm', ['sounds/maple_story_login.mp3','sounds/maple_story_login.ogg']);
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
     this.game.physics.startSystem(Phaser.Physics.ARCAD);
+    bgm = this.game.add.audio('bgm');
+    bgm.play();
     this.state.start('Preload');
   }
 };
-
-var bgm;
 
 landingPage.Preload.prototype = {
   preload: function(){
@@ -36,12 +39,9 @@ landingPage.Preload.prototype = {
     this.load.image('tileCampus','assets/campus.png');
     this.load.image('tree', 'assets/tree.jpg');
     this.load.image('explore', 'assets/explore.png');
-    this.load.audio('bgm', ['sounds/maple_story_login.mp3','sounds/maple_story_login.ogg']);
 
   },
   create: function(){
-    bgm = this.game.add.audio('bgm');
-    bgm.play();
     this.state.start('Menu');
   }
 };
