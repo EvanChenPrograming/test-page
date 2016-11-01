@@ -41,7 +41,7 @@ landingPage.Preload.prototype = {
   },
   create: function(){
     bgm = this.game.add.audio('bgm');
-    bgm.play(null, null, null, true, false);
+    bgm.play();
     this.state.start('Menu');
   }
 };
