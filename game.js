@@ -1,14 +1,15 @@
 
 var landingPage = landingPage || {};
+var bgm;
 
 landingPage.Boot = function(){};
 landingPage.Preload = function(){};
 landingPage.Menu = function(){};
-landingPage.inGame = function(){};
+landingPage.Game = function(){};
 
 landingPage.Boot.prototype = {
   preload: function(){
-    this.load.image('icon', 'assets/icon.png');
+    this.load.image('icon', 'assets/icon.jpg');
     this.load.image('loadbar', 'assets/preloader-bar.png');
   },
   create: function(){
@@ -17,9 +18,6 @@ landingPage.Boot.prototype = {
     this.state.start('Preload');
   }
 };
-
-var bgm;
-
 landingPage.Preload.prototype = {
   preload: function(){
   	this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'icon');
@@ -45,7 +43,6 @@ landingPage.Preload.prototype = {
     this.state.start('Menu');
   }
 };
-
 landingPage.Menu.prototype ={
   onClicked: function(){
     alert('clicked');
@@ -57,16 +54,21 @@ landingPage.Menu.prototype ={
     this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'explore', this.onClicked, this);
   }
 };
+landingPage.Game.prototype ={
+  create: function(){
+    this.map = this.game.add.tilemap('map');
+    this.map.addTilesetImage('IIMfront_fixed', 'tileIIM');
+    this.map.addTilesetImage('2', 'tile2');
+    this.map.addTilesetImage('campus', 'tileCampus');
+    this.map.createLayer('layer1');
+    this.map.createLayer('layer2');
+    this.map.createLayer('layer3');
+    this.objectlayer = this.map.createLayer('objects');
+    this.stairs = this.map.createLayer('stairs');
 
-landingPage.inGame.prototype ={
-  /*create: function(){
-    this.tree = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'tree');
-    this.tree.anchor.setTo(0.5);
-    this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'explore', onClicked, this);
+
+
   },
-  onClicked: function(){
-    this.state.start('inGame');
-  }*/
 }
 
 
@@ -75,6 +77,6 @@ landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 landingPage.game.state.add('Boot', landingPage.Boot);
 landingPage.game.state.add('Preload', landingPage.Preload);
 landingPage.game.state.add('Menu', landingPage.Menu);
-landingPage.game.state.add('inGame', landingPage.inGame);
+landingPage.game.state.add('Game', landingPage.inGame);
 
 landingPage.game.state.start('Boot');
