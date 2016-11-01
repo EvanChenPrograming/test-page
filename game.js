@@ -63,7 +63,7 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer1');
     this.map.createLayer('layer2');
     this.map.createLayer('layer3');
-    this.objectlayer = this.map.createLayer('objects');
+    this.objectlayer = this.map.createLayer('object');
     this.stairs = this.map.createLayer('stairs');
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
