@@ -47,18 +47,18 @@ landingPage.Preload.prototype = {
 };
 
 landingPage.Menu.prototype ={
+  onClicked: function(){
+    alert('clicked');
+    this.state.start('inGame');
+  },
   create: function(){
     this.tree = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'tree');
     this.tree.anchor.setTo(0.5);
     this.tree.scale.x = 800;
     this.tree.scale.y = 534;
     this.game.add.button(this.game.world.centerX, this.game.world.centerY, 'explore', onClicked, this);
-  },
-  onClicked: function(){
-    alert('clicked');
-    this.state.start('inGame');
   }
-}
+};
 
 landingPage.inGame.prototype ={
   /*create: function(){
