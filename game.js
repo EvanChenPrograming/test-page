@@ -73,10 +73,35 @@ landingPage.Game.prototype ={
 
     this.sprite.animations.add('left', [4, 5, 6], 8, true);
     this.sprite.animations.add('right', [7, 8, 9], 8, true);
+    this.sprite.animations.add('up', [10, 11, 12], 8, true);
 
-
+    this.cursors = this.game.input.keyboard.createCursorKeys();
 
   },
+  update: function(){
+    this.game.physics.arcade.collide(this.sprite, this.objectlayer);
+
+    if (cursors.left.isDown)
+    {
+        this.sprite.body.velocity.x = -150;
+        this.sprite.animations.play('left');
+    }
+    else if (cursors.right.isDown)
+    {
+        this.sprite.body.velocity.x = 150;
+        this.sprite.animations.play('right');
+    }
+    else
+    {
+        this.sprite.animations.stop();
+        this.sprite.frame = 2;
+    }
+
+    if (Phaser.Keyboard.ALT.isDown && this.sprite.body.touching.down)
+    {
+        this.sprite.body.velocity.y = -250;
+    }
+  }
 }
 
 
