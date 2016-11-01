@@ -71,10 +71,11 @@ landingPage.Game.prototype ={
     this.sprite.body.gravity.y = 300;
     this.sprite.body.collideWorldBounds = true;
 
-    this.sprite.animations.add('left', [4, 6], 8, true);
-    this.sprite.animations.add('right', [7, 9], 8, true);
+    this.sprite.animations.add('left', [4, 5, 6], 50, true);
+    this.sprite.animations.add('right', [7, 8, 9], 50, true);
     this.sprite.animations.add('up', [10, 11, 12], 8, true);
 
+    this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
   },
@@ -98,7 +99,7 @@ landingPage.Game.prototype ={
         this.sprite.frame = 2;
     }
 
-    if (Phaser.Keyboard.ALT.isDown && this.sprite.body.touching.down)
+    if (this.jump.isDown && this.sprite.body.touching.down)
     {
         this.sprite.body.velocity.y = -250;
     }
