@@ -14,7 +14,7 @@ landingPage.Boot.prototype = {
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
-    this.game.physics.startSystem(Phaser.Physics.ARCAD);
+    this.game.physics.startSystem(Phaser.Physics.P2JS);
     this.state.start('Preload');
   }
 };
@@ -99,7 +99,7 @@ landingPage.Game.prototype ={
         this.sprite.frame = 2;
     }
 
-    if (this.jump.isDown /*&& this.sprite.body.touching.down*/)
+    if (this.jump.isDown && this.sprite.body.touching.down)
     {
         this.sprite.body.velocity.y = -250;
     }
