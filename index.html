@@ -4,6 +4,7 @@
 	<meta charset="UTF-8" />
     <title>My first game</title>
     <script src="//cdn.jsdelivr.net/phaser/2.6.2/phaser.js"></script>
+    <script src="game.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -12,109 +13,7 @@
 </head>
 <body>
 
-<script type="text/javascript">
-
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-
-function preload() {
-
-    game.load.tilemap('tilemap', 'assets/map1.json');
-		game.load.image('map','assets/map1.png');
-    game.load.spritesheet('dude', 'assets/org_h01.png', 32, 32);
-
-}
-
-var player;
-var cursors;
-var map;
-var layer;
-
-function create() {
-
-
-		game.add.sprite(0, 0, 'map');
-
-		//map = game.add.tilemap('tilemap');
-
-		//layer = map.createLayer(0);
-	//	layer.resizeWorld();
-	//	map.setCollisionBetween(1, 12);
-    //  We're going to be using physics, so enable the Arcade Physics system
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    player = game.add.sprite(32, game.world.height - 150, 'dude');
-
-    //  We need to enable physics on the player
-    game.physics.arcade.enable(player);
-
-    //  Player physics properties. Give the little guy a slight bounce.
-    player.body.bounce.y = 0.2;
-    player.body.gravity.y = 300;
-    player.body.collideWorldBounds = true;
-
-    //  Our two animations, walking left and right.
-
-    player.animations.add('left', [4, 6], 10, true);
-    player.animations.add('right', [8, 9], 10, true);
-    player.animations.add('climb', [10, 11, 12], 10, true);
-
-		game.camera.follow(player);
-
-    //  Our controls.
-    cursors = game.input.keyboard.createCursorKeys();
-		game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-
-		game.input.onDown.add(gofull,this);
-
-}
-
-function gofull(){
-	if (game.scale.isFullScreen){
-		game.scale.stopFullScreen();
-	}
-	else {
-		game.scale.startFullScreen(false);
-	}
-}
-
-function update() {
-
-    //  Collide the player and the stars with the platforms
-    //game.physics.arcade.collide(player, layer);
-
-    //  Reset the players velocity (movement)
-    player.body.velocity.x = 0;
-
-    if (cursors.left.isDown)
-    {
-        //  Move to the left
-        player.body.velocity.x = -150;
-
-        player.animations.play('left');
-    }
-    else if (cursors.right.isDown)
-    {
-        //  Move to the right
-        player.body.velocity.x = 150;
-
-        player.animations.play('right');
-    }
-    else
-    {
-        //  Stand still
-        player.animations.stop();
-				player.frame=2;
-    }
-
-    //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown /*&& player.body.touching.down*/)
-    {
-        player.body.velocity.y = -350;
-    }
-
-}
-
-
+<script src="app.js">
 </script>
 
 </body>
