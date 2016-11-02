@@ -69,6 +69,7 @@ landingPage.Game.prototype ={
     this.stairs = this.map.createLayer('stairs');
 
     this.map.setCollision(2205, true, this.collisionLayer);
+    this.map.setCollisionBetween(500, 1500, this.stairs);
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
     this.game.physics.arcade.enable(this.sprite);
