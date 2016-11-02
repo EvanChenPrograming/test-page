@@ -30,7 +30,9 @@ landingPage.Preload.prototype = {
     //load things
     this.load.spritesheet('sprite', 'assets/org_h01.png', 32, 32);
     this.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.audio('bgm', ['sounds/maple_story_login.mp3','sounds/maple_story_login.ogg']);
+    this.load.audio('bgm', 'sounds/maple_story_login.mp3');
+    //template
+    //this.load.audio('bgm', 'sounds/maple_story_login.ogg');
     this.load.image('tileIIM','assets/IIMfront_fixed.jpg');
     this.load.image('tile2','assets/2.png');
     this.load.image('tileCampus','assets/campus.png');
@@ -66,7 +68,7 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer3');
     this.stairs = this.map.createLayer('stairs');
 
-    this.map.setCollisionBetween(1, 12, true, this.collisionLayer);
+    //this.map.setCollisionBetween(1, 12, true, this.collisionLayer);
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
     this.game.physics.arcade.enable(this.sprite);
