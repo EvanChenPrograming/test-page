@@ -106,7 +106,7 @@ landingPage.Game.prototype ={
       this.sprite.frame = 2;
     }
 
-    if (this.cursor.up.isDown && this.onStair){
+    if (this.cursors.up.isDown && this.onStair){
       this.sprite.body.velocity.y = -150;
       this.sprite.animations.play('up');
     }
