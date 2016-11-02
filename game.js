@@ -68,7 +68,7 @@ landingPage.Game.prototype ={
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
     this.game.physics.arcade.enable(this.sprite);
-    this.sprite.body.gravity.y = 300;
+    this.sprite.body.gravity.y = 500;
     this.sprite.body.collideWorldBounds = true;
 
     this.sprite.animations.add('left', [3, 4, 5], 10, true);
@@ -80,7 +80,7 @@ landingPage.Game.prototype ={
 
   },
   update: function(){
-    this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
+    this.platform = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
 
     this.sprite.body.velocity.x = 0;
     if (this.cursors.left.isDown)
@@ -99,7 +99,7 @@ landingPage.Game.prototype ={
         this.sprite.frame = 2;
     }
 
-    if (this.jump.isDown )//&& this.sprite.body.touching.down)
+    if (this.jump.isDown && this.platform)
     {
         this.sprite.body.velocity.y = -250;
     }
