@@ -22,7 +22,7 @@ landingPage.Preload.prototype = {
   preload: function(){
   	this.splash = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'icon');
     this.splash.anchor.setTo(0.5);
-    this.splash.scale.setTo(0.7, 0.7);
+    this.splash.scale.setTo(0.6, 0.6);
     this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY + 128, 'loadbar');
     this.preloadBar.anchor.setTo(0.5);
     this.load.setPreloadSprite(this.preloadBar);
@@ -84,9 +84,10 @@ landingPage.Game.prototype ={
 
   },
   update: function(){
-    this.platform = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
+    var onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
+    //this.onStair = this.game.physics.arcade.overlap()
 
-    if(this.platform)alert('collide');
+    if(this.onGround)alert('collide');
     this.sprite.body.velocity.x = 0;
     if (this.cursors.left.isDown)
     {
@@ -104,7 +105,7 @@ landingPage.Game.prototype ={
         this.sprite.frame = 2;
     }
 
-    if (this.jump.isDown && this.platform)
+    if (this.jump.isDown && this.onGround)
     {
         this.sprite.body.velocity.y = -250;
     }
