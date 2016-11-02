@@ -57,10 +57,10 @@ landingPage.Menu.prototype ={
 landingPage.Game.prototype ={
   create: function(){
     this.map = this.game.add.tilemap('map');
-    this.collisionLayer = this.map.createLayer('collisionLayer');
     this.map.addTilesetImage('IIMfront_fixed', 'tileIIM');
     this.map.addTilesetImage('2', 'tile2');
     this.map.addTilesetImage('campus', 'tileCampus');
+    this.collisionLayer = this.map.createLayer('collisionLayer');
     this.map.createLayer('layer1');
     this.map.createLayer('layer2');
     this.map.createLayer('layer3');
