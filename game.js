@@ -68,7 +68,7 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer3');
     this.stairs = this.map.createLayer('stairs');
 
-    //this.map.setCollisionBetween(1, 12, true, this.collisionLayer);
+    this.map.setCollision(2205, true, this.collisionLayer);
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
     this.game.physics.arcade.enable(this.sprite);
@@ -84,7 +84,7 @@ landingPage.Game.prototype ={
 
   },
   update: function(){
-    var onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
+    this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
     //this.onStair = this.game.physics.arcade.overlap()
 
     if(this.onGround)alert('collide');
