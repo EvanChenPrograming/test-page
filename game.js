@@ -86,6 +86,7 @@ landingPage.Game.prototype ={
   update: function(){
     this.platform = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
 
+    if(this.platform)alert('collide');
     this.sprite.body.velocity.x = 0;
     if (this.cursors.left.isDown)
     {
