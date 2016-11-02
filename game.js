@@ -87,7 +87,6 @@ landingPage.Game.prototype ={
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
     //this.onStair = this.game.physics.arcade.overlap()
 
-    if(this.onGround)alert('collide');
     this.sprite.body.velocity.x = 0;
     if (this.cursors.left.isDown)
     {
