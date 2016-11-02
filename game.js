@@ -57,13 +57,13 @@ landingPage.Menu.prototype ={
 landingPage.Game.prototype ={
   create: function(){
     this.map = this.game.add.tilemap('map');
+    this.collisionLayer = this.map.createLayer('collisionLayer');
     this.map.addTilesetImage('IIMfront_fixed', 'tileIIM');
     this.map.addTilesetImage('2', 'tile2');
     this.map.addTilesetImage('campus', 'tileCampus');
     this.map.createLayer('layer1');
     this.map.createLayer('layer2');
     this.map.createLayer('layer3');
-    this.collisionLayer = this.map.createLayer('collisionLayer');
     this.stairs = this.map.createLayer('stairs');
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
@@ -71,8 +71,8 @@ landingPage.Game.prototype ={
     this.sprite.body.gravity.y = 300;
     this.sprite.body.collideWorldBounds = true;
 
-    this.sprite.animations.add('left', [3, 4, 5], 2, true);
-    this.sprite.animations.add('right', [6, 7, 8], 2, true);
+    this.sprite.animations.add('left', [3, 4, 5], 10, true);
+    this.sprite.animations.add('right', [6, 7, 8], 10, true);
     this.sprite.animations.add('up', [10, 11, 12], 8, true);
 
     this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
@@ -99,7 +99,7 @@ landingPage.Game.prototype ={
         this.sprite.frame = 2;
     }
 
-    if (this.jump.isDown && this.sprite.body.touching.down)
+    if (this.jump.isDown )//&& this.sprite.body.touching.down)
     {
         this.sprite.body.velocity.y = -250;
     }
