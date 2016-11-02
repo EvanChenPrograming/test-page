@@ -75,9 +75,10 @@ landingPage.Game.prototype ={
     this.sprite.body.gravity.y = 500;
     this.sprite.body.collideWorldBounds = true;
 
+    this.sprite.animations.add('jump', [0, 1, 2],10 ,false);
     this.sprite.animations.add('left', [3, 4, 5], 10, true);
     this.sprite.animations.add('right', [6, 7, 8], 10, true);
-    this.sprite.animations.add('up', [10, 11, 12], 8, true);
+    this.sprite.animations.add('up', [9, 10, 11], 10, true);
 
     this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -85,28 +86,35 @@ landingPage.Game.prototype ={
   },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
-    //this.onStair = this.game.physics.arcade.overlap()
+    this.onStair = this.game.physics.arcade.overlap(this.sprite, this.stairs);
 
     this.sprite.body.velocity.x = 0;
+    if(this.onStair)this.sprite.body.velocity.y = 0;
     if (this.cursors.left.isDown)
     {
-        this.sprite.body.velocity.x = -150;
-        this.sprite.animations.play('left');
+      this.sprite.body.velocity.x = -150;
+      this.sprite.animations.play('left');
     }
     else if (this.cursors.right.isDown)
     {
-        this.sprite.body.velocity.x = 150;
-        this.sprite.animations.play('right');
+      this.sprite.body.velocity.x = 150;
+      this.sprite.animations.play('right');
     }
     else
     {
-        this.sprite.animations.stop();
-        this.sprite.frame = 2;
+      this.sprite.animations.stop();
+      this.sprite.frame = 2;
     }
 
-    if (this.jump.isDown && this.onGround)
+    if (this.cursor.up.isDown && this.onStair){
+      this.sprite.body.velocity.y = -150;
+      this.sprite.animations.play('up');
+    }
+
+    if (this.jump.isDown && this.onGround )
     {
-        this.sprite.body.velocity.y = -250;
+      this.sprite.body.velocity.y = -250;
+      this.sprite.animations.play('jump');
     }
   }
 }
