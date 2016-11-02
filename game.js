@@ -14,7 +14,7 @@ landingPage.Boot.prototype = {
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
-    this.game.physics.startSystem(Phaser.Physics.P2JS);
+    this.game.physics.startSystem(Phaser.Physics.ARCAD);
     this.state.start('Preload');
   }
 };
@@ -63,7 +63,7 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer1');
     this.map.createLayer('layer2');
     this.map.createLayer('layer3');
-    this.objectlayer = this.map.createLayer('object');
+    this.collisionLayer = this.map.createLayer('collisionLayer');
     this.stairs = this.map.createLayer('stairs');
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
@@ -80,7 +80,7 @@ landingPage.Game.prototype ={
 
   },
   update: function(){
-    this.game.physics.arcade.collide(this.sprite, this.objectlayer);
+    this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
 
     this.sprite.body.velocity.x = 0;
     if (this.cursors.left.isDown)
