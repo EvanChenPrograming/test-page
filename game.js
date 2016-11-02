@@ -43,7 +43,6 @@ function setTileCollision(mapLayer, idxOrArray, dirs) {
 }
 
 
-
 var landingPage = landingPage || {};
 var bgm;
 
@@ -120,7 +119,13 @@ landingPage.Game.prototype ={
         left: false,
         right: false
     });
-    this.map.setCollisionBetween(500, 1500, false, this.stairs);
+    this.map.setCollisionBetween(500, 1500, true, this.stairs);
+    setTileCollision(this.stairs,[580, 588, 596, 1038, 1046, 1054], {
+        top: false,
+        bottom: false,
+        left: false,
+        right: false
+    });
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
     this.game.physics.arcade.enable(this.sprite);
