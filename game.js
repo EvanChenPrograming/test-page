@@ -126,6 +126,7 @@ landingPage.Game.prototype ={
     this.game.physics.arcade.enable(this.sprite);
     this.sprite.body.gravity.y = 500;
     //this.sprite.body.collideWorldBounds = true;
+    this.world.setBounds(0, 0, 800, 600);
     this.world.wrap(this.sprite,null, null, null, false);
 
     this.sprite.animations.add('jump', [0, 1, 2],10 ,false);
