@@ -133,6 +133,7 @@ landingPage.Game.prototype ={
     this.sprite.body.gravity.y = 500;
     this.sprite.body.collideWorldBounds = true;
     //this.world.wrap(this.sprite,null, null, null, false);
+    this.game.follow(this.sprite);
 
     this.sprite.animations.add('jump', [0, 1, 2],10 ,false);
     this.sprite.animations.add('left', [3, 4, 5], 10, true);
@@ -141,19 +142,19 @@ landingPage.Game.prototype ={
 
     this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
     this.cursors = this.game.input.keyboard.createCursorKeys();
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+    this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     this.game.input.onDown.add(gofull, this);
 
   },
   gofull: function() {
 
-      if (game.scale.isFullScreen)
+      if (this.game.scale.isFullScreen)
       {
-          game.scale.stopFullScreen();
+          this.game.scale.stopFullScreen();
       }
       else
       {
-          game.scale.startFullScreen(false);
+          this.game.scale.startFullScreen(false);
       }
   },
   update: function(){
