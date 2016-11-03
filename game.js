@@ -42,6 +42,18 @@ function setTileCollision(mapLayer, idxOrArray, dirs) {
 
 }
 
+function gofull(game) {
+
+    if (game.scale.isFullScreen)
+    {
+        game.scale.stopFullScreen();
+    }
+    else
+    {
+        game.scale.startFullScreen(false);
+    }
+
+}
 
 var landingPage = landingPage || {};
 var bgm;
@@ -58,7 +70,7 @@ landingPage.Boot.prototype = {
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
-    this.game.scale.setupScale(1920, 1080);
+    this.game.scale.setupScale(1280, 720);
     this.game.physics.startSystem(Phaser.Physics.ARCAD);
     this.state.start('Preload');
   }
@@ -141,6 +153,8 @@ landingPage.Game.prototype ={
 
     this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
     this.cursors = this.game.input.keyboard.createCursorKeys();
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+    this.game.input.onDown.add(gofull(this), this);
 
   },
   update: function(){
