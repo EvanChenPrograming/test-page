@@ -58,7 +58,7 @@ landingPage.Boot.prototype = {
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
-    game.scale.setupScale(1024, 768);
+    this.game.scale.setupScale(1920, 1080);
     this.game.physics.startSystem(Phaser.Physics.ARCAD);
     this.state.start('Preload');
   }
@@ -179,7 +179,7 @@ landingPage.Game.prototype ={
 }
 
 
-landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
+landingPage.game = new Phaser.Game(800, 450, Phaser.AUTO, '');
 
 landingPage.game.state.add('Boot', landingPage.Boot);
 landingPage.game.state.add('Preload', landingPage.Preload);
