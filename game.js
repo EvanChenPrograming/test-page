@@ -58,7 +58,7 @@ landingPage.Boot.prototype = {
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
-    this.game.setGameSize(1024, 768);
+    this.game.scale.setupScale(1024, 768);
     this.game.physics.startSystem(Phaser.Physics.ARCAD);
     this.state.start('Preload');
   }
