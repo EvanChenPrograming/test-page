@@ -102,17 +102,6 @@ landingPage.Menu.prototype ={
   }
 };
 landingPage.Game.prototype ={
-  gofull: function() {
-
-      if (this.game.scale.isFullScreen)
-      {
-          this.game.scale.stopFullScreen();
-      }
-      else
-      {
-          this.game.scale.startFullScreen(false);
-      }
-  },
   create: function(){
     this.map = this.game.add.tilemap('map');
     this.map.addTilesetImage('IIMfront_fixed', 'tileIIM');
@@ -154,9 +143,20 @@ landingPage.Game.prototype ={
     this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-    this.game.input.onDown.add(gofull, this);
+    this.game.input.onDown.add(this.gofull, this);
 
   },
+    gofull: function() {
+
+        if (this.game.scale.isFullScreen)
+        {
+            this.game.scale.stopFullScreen();
+        }
+        else
+        {
+            this.game.scale.startFullScreen(false);
+        }
+    },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
     this.onStair = this.game.physics.arcade.collide(this.sprite, this.stairs);
