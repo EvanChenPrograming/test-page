@@ -58,6 +58,7 @@ landingPage.Boot.prototype = {
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
+    this.game.setGameSize(window.width, window.height);
     this.game.physics.startSystem(Phaser.Physics.ARCAD);
     this.state.start('Preload');
   }
@@ -120,12 +121,12 @@ landingPage.Game.prototype ={
         right: false
     });
     this.map.setCollisionBetween(500, 1500, true, this.stairs);
-    setTileCollision(this.stairs,[580, 588, 596, 1038, 1046, 1054], {
+    /*setTileCollision(this.stairs,[580, 588, 596, 1038, 1046, 1054], {
         top: true,
         bottom: false,
         left: false,
         right: false
-    });
+    });*/
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
     this.game.physics.arcade.enable(this.sprite);
