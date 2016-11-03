@@ -42,18 +42,6 @@ function setTileCollision(mapLayer, idxOrArray, dirs) {
 
 }
 
-function gofull(game) {
-
-    if (game.scale.isFullScreen)
-    {
-        game.scale.stopFullScreen();
-    }
-    else
-    {
-        game.scale.startFullScreen(false);
-    }
-
-}
 
 var landingPage = landingPage || {};
 var bgm;
@@ -154,8 +142,19 @@ landingPage.Game.prototype ={
     this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
     this.cursors = this.game.input.keyboard.createCursorKeys();
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-    this.game.input.onDown.add(gofull(this), this);
+    this.game.input.onDown.add(gofull, this);
 
+  },
+  gofull: function() {
+
+      if (game.scale.isFullScreen)
+      {
+          game.scale.stopFullScreen();
+      }
+      else
+      {
+          game.scale.startFullScreen(false);
+      }
   },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
