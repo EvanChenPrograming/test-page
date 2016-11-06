@@ -192,7 +192,7 @@ landingPage.Game.prototype ={
 }
 
 
-landingPage.game = new Phaser.Game(800, 450, Phaser.AUTO, '');
+landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
 landingPage.game.state.add('Boot', landingPage.Boot);
 landingPage.game.state.add('Preload', landingPage.Preload);
