@@ -112,7 +112,7 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer3');
     this.map.createLayer('stairs');
     this.stairs = this.game.add.group();
-    this.createFromTiles([580, 588, 596, 1038, 1046, 1054], null, null ,null, this.stairs);
+    this.Tilemap.createFromTiles([580, 588, 596, 1038, 1046, 1054], null, null ,null, this.stairs);
 
 
     this.map.setCollision(2205, true, this.collisionLayer);
