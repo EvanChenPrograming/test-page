@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" nextobjectid="19">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" nextobjectid="49">
  <tileset firstgid="1" name="IIMfront_fixed" tilewidth="32" tileheight="32" tilecount="475" columns="25">
   <image source="IIMfront_fixed.jpg" trans="ff00ff" width="800" height="608"/>
  </tileset>
@@ -101,34 +101,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="object" visible="0">
-  <object id="2" x="99" y="191">
-   <polyline points="0,0 188,1 188,21 145,32 30,30 10,21 -3,-2"/>
-  </object>
-  <object id="3" x="1" y="319">
-   <polygon points="0,0 93,1 92,18 74,26 38,32 15,23 6,18"/>
-  </object>
-  <object id="4" x="545" y="225">
-   <polygon points="0,0 61,-2 63,10 56,23 38,27 17,26 3,14"/>
-  </object>
-  <object id="5" x="-1" y="479" width="801" height="31"/>
-  <object id="6" x="670" y="193" width="131" height="31"/>
-  <object id="7" x="382" y="193" width="97" height="31"/>
-  <object id="8" x="-2" y="87" width="386" height="23"/>
-  <object id="9" x="481" y="87.5" width="319" height="23"/>
-  <object id="11" x="129" y="287">
-   <polygon points="0,0 31,1 29,27 15,32 1,24"/>
-  </object>
-  <object id="12" x="673" y="287">
-   <polygon points="0,0 31,1 29,27 15,32 1,24"/>
-  </object>
-  <object id="13" x="141" y="319" width="6" height="71"/>
-  <object id="14" x="686" y="320.5" width="6" height="71"/>
-  <object id="15" x="355" y="471">
-   <polygon points="0,0 23,-14 40,-9 54,-1 54,9 -1,7"/>
-  </object>
-  <object id="16" x="479.958" y="415.348" width="191.192" height="31.6456"/>
- </objectgroup>
  <layer name="stairs" width="25" height="19">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -153,7 +125,15 @@
 </data>
  </layer>
  <objectgroup name="stobj">
-  <object id="17" x="636.867" y="193.829" width="34.2827" height="217.563"/>
-  <object id="18" x="511.603" y="416.667" width="31.6456" height="89.6624"/>
+  <object id="39" gid="580" x="640" y="224" width="32" height="32"/>
+  <object id="40" gid="596" x="640" y="416" width="32" height="32"/>
+  <object id="41" gid="588" x="640" y="257" width="32" height="32"/>
+  <object id="42" gid="588" x="640" y="289" width="32" height="32"/>
+  <object id="43" gid="588" x="640" y="320" width="32" height="32"/>
+  <object id="44" gid="588" x="640" y="352" width="32" height="32"/>
+  <object id="45" gid="588" x="640" y="384" width="32" height="32"/>
+  <object id="46" gid="580" x="512" y="448" width="32" height="32"/>
+  <object id="47" gid="588" x="512" y="480" width="32" height="32"/>
+  <object id="48" gid="596" x="512" y="512" width="32" height="32"/>
  </objectgroup>
 </map>

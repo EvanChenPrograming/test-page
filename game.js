@@ -58,7 +58,7 @@ landingPage.Boot.prototype = {
   },
   create: function(){
     this.game.stage.backgroundColor = '#fff';
-    this.game.physics.startSystem(Phaser.Physics.ARCAD);
+    this.game.physics.startSystem(Phaser.Physics.NINJA);
     this.state.start('Preload');
   }
 };
@@ -86,7 +86,7 @@ landingPage.Preload.prototype = {
   },
   create: function(){
     bgm = this.game.add.audio('bgm', 1, true);
-    bgm.play();
+    //bgm.play();
     this.state.start('Menu');
   }
 };
@@ -128,8 +128,8 @@ landingPage.Game.prototype ={
     });*/
 
     this.sprite = this.game.add.sprite(100, 300,'sprite');
-    this.game.physics.arcade.enable(this.sprite);
-    this.sprite.body.gravity.y = 500;
+    this.game.physics.ninja.enable(this.sprite);
+    this.game.physics.ninja.gravity = 2;
     this.sprite.body.collideWorldBounds = true;
     //this.world.wrap(this.sprite,null, null, null, false);
 
@@ -144,7 +144,7 @@ landingPage.Game.prototype ={
   },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
-    this.onStair = this.game.physics.arcade.collide(this.sprite, this.stairs);
+    this.onStair = this.game.physics.arcade.overlap(this.sprite, this.stairs);
 
     this.sprite.body.velocity.x = 0;
     if(this.onStair)this.sprite.body.velocity.y = 0;
