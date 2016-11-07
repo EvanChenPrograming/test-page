@@ -110,10 +110,7 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer1');
     this.map.createLayer('layer2');
     this.map.createLayer('layer3');
-    this.map.createLayer('stairs');
-    this.stairs = this.game.add.group();
-    this.map.createFromObjects('stobj', 'stairs', null, null, null, null, this.stairs);
-
+    this.stairs = this.map.createLayer('stairs');
 
     this.map.setCollision(2205, true, this.collisionLayer);
     setTileCollision(this.collisionLayer,2205, {
