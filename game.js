@@ -121,7 +121,7 @@ landingPage.Game.prototype ={
     });
     this.map.setCollisionBetween(500, 1500, true, this.stairs);
     /*setTileCollision(this.stairs,[580, 588, 596, 1038, 1046, 1054], {
-        top: true,
+        top: false,
         bottom: false,
         left: false,
         right: false
@@ -132,7 +132,6 @@ landingPage.Game.prototype ={
     this.sprite.body.gravity.y = 500;
     this.sprite.body.collideWorldBounds = true;
     //this.world.wrap(this.sprite,null, null, null, false);
-    this.game.camera.follow(this.sprite);
 
     this.sprite.animations.add('jump', [0, 1, 2],10 ,false);
     this.sprite.animations.add('left', [3, 4, 5], 10, true);
@@ -141,21 +140,8 @@ landingPage.Game.prototype ={
 
     this.jump = this.game.input.keyboard.addKey(Phaser.Keyboard.ALT);
     this.cursors = this.game.input.keyboard.createCursorKeys();
-    this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-    this.game.input.onDown.add(this.gofull, this);
 
   },
-    gofull: function() {
-
-        if (this.game.scale.isFullScreen)
-        {
-            this.game.scale.stopFullScreen();
-        }
-        else
-        {
-            this.game.scale.startFullScreen(false);
-        }
-    },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
     this.onStair = this.game.physics.arcade.collide(this.sprite, this.stairs);
