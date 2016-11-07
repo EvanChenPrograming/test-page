@@ -110,7 +110,10 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer1');
     this.map.createLayer('layer2');
     this.map.createLayer('layer3');
-    this.stairs = this.map.createLayer('stairs');
+    this.map.createLayer('stairs');
+    this.stairs = this.game.add.group();
+    this.createFromTiles([580, 588, 596, 1038, 1046, 1054], null, null, ,null, this.stairs);
+
 
     this.map.setCollision(2205, true, this.collisionLayer);
     setTileCollision(this.collisionLayer,2205, {
@@ -119,7 +122,7 @@ landingPage.Game.prototype ={
         left: false,
         right: false
     });
-    this.map.setCollisionBetween(500, 1500, true, this.stairs);
+    //this.map.setCollisionBetween(500, 1500, true, this.stairs);
     /*setTileCollision(this.stairs,[580, 588, 596, 1038, 1046, 1054], {
         top: false,
         bottom: false,
@@ -144,7 +147,7 @@ landingPage.Game.prototype ={
   },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
-    this.onStair = this.game.physics.arcade.collide(this.sprite, this.stairs);
+    this.onStair = this.game.physics.arcade.overlap(this.sprite, this.stairs);
 
     this.sprite.body.velocity.x = 0;
     if(this.onStair)this.sprite.body.velocity.y = 0;
