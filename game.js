@@ -147,7 +147,7 @@ landingPage.Game.prototype ={
   },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
-    this.onStair = this.game.physics.arcade.overlap(this.sprite, this.stairs);
+    this.onStair = this.game.physics.arcade.collide(this.sprite, this.stairs);
 
     this.sprite.body.velocity.x = 0;
     if(this.onStair)this.sprite.body.velocity.y = 0;
