@@ -118,7 +118,7 @@ landingPage.Game.prototype ={
     this.longStair = this.game.add.sprite(20*32, 6*32, 'longStair');
     this.longStair.scale.setTo(1.1, 1.1);
     this.stairs.add(this.longStair);
-    this.stairs.add(this.game.add.sprite(16*32, 13*32, 'shortStair'));
+    this.stairs.add(this.game.add.sprite(16*32, 13*32-5, 'shortStair'));
 
 
     this.map.setCollision(2205, true, this.collisionLayer);
@@ -152,7 +152,7 @@ landingPage.Game.prototype ={
 
   },
   update: function(){
-    this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
+    if (!onClimb) this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
     this.onStair = this.game.physics.arcade.overlap(this.sprite, this.stairs);
 
     this.sprite.body.velocity.x = 0;
@@ -173,6 +173,7 @@ landingPage.Game.prototype ={
       this.sprite.frame = 2;
     }
     if (this.onStair && this.cursors.up.isDown) onClimb = true;
+    if (this.onStair && this.cursors.down.isDown) onClimb = true;
     else if (!this.onStair || this.jump.isDown) onClimb = false;
     if(onClimb){
       this.sprite.body.gravity.y = 0;
