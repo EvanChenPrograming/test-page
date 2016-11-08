@@ -105,6 +105,8 @@ landingPage.Menu.prototype ={
 };
 landingPage.Game.prototype ={
   create: function(){
+    this.stage.setBackgroundColor('#000000');
+    this.game.stage.disableVisibilityChange = true;
     this.map = this.game.add.tilemap('map');
     this.map.addTilesetImage('IIMfront_fixed', 'tileIIM');
     this.map.addTilesetImage('2', 'tile2');
@@ -207,7 +209,7 @@ landingPage.Game.prototype ={
 }
 
 
-landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, '');
+landingPage.game = new Phaser.Game(800, 600, Phaser.AUTO, 'game');
 
 landingPage.game.state.add('Boot', landingPage.Boot);
 landingPage.game.state.add('Preload', landingPage.Preload);
