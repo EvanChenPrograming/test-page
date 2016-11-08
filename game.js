@@ -45,6 +45,7 @@ function setTileCollision(mapLayer, idxOrArray, dirs) {
 
 var landingPage = landingPage || {};
 var bgm;
+var onClimb = false;
 
 landingPage.Boot = function(){};
 landingPage.Preload = function(){};
@@ -82,11 +83,13 @@ landingPage.Preload.prototype = {
     this.load.image('tileCampus','assets/campus.png');
     this.load.image('tree', 'assets/tree.jpg');
     this.load.image('explore', 'assets/explore.png');
+    this.load.image('longStair', 'assets/longStair.png');
+    this.load.image('shortStair', 'assets/shortStair.png');
 
   },
   create: function(){
     bgm = this.game.add.audio('bgm', 1, true);
-    bgm.play();
+    //bgm.play();
     this.state.start('Menu');
   }
 };
@@ -110,7 +113,13 @@ landingPage.Game.prototype ={
     this.map.createLayer('layer1');
     this.map.createLayer('layer2');
     this.map.createLayer('layer3');
-    this.stairs = this.map.createLayer('stairs');
+    this.stairs = this.game.add.group();
+    this.stairs.enableBody = true;
+    this.longStair = this.game.add.sprite(20*32, 6*32, 'longStair');
+    this.longStair.scale.setTo(1.1, 1.1);
+    this.stairs.add(this.longStair);
+    this.stairs.add(this.game.add.sprite(16*32, 13*32, 'shortStair'));
+
 
     this.map.setCollision(2205, true, this.collisionLayer);
     setTileCollision(this.collisionLayer,2205, {
@@ -119,7 +128,7 @@ landingPage.Game.prototype ={
         left: false,
         right: false
     });
-    this.map.setCollisionBetween(500, 1500, true, this.stairs);
+    //this.map.setCollisionBetween(500, 1500, true, this.stairs);
     /*setTileCollision(this.stairs,[580, 588, 596, 1038, 1046, 1054], {
         top: false,
         bottom: false,
@@ -144,10 +153,10 @@ landingPage.Game.prototype ={
   },
   update: function(){
     this.onGround = this.game.physics.arcade.collide(this.sprite, this.collisionLayer);
-    this.onStair = this.game.physics.arcade.collide(this.sprite, this.stairs);
+    this.onStair = this.game.physics.arcade.overlap(this.sprite, this.stairs);
 
     this.sprite.body.velocity.x = 0;
-    if(this.onStair)this.sprite.body.velocity.y = 0;
+    if(onClimb)this.sprite.body.velocity.y = 0;
     if (this.cursors.left.isDown)
     {
       this.sprite.body.velocity.x = -150;
@@ -163,16 +172,33 @@ landingPage.Game.prototype ={
       this.sprite.animations.stop();
       this.sprite.frame = 2;
     }
-
-    if (this.cursors.up.isDown && this.onStair){
-      this.sprite.body.velocity.y = -150;
-      this.sprite.animations.play('up');
+    if (this.onStair && this.cursors.up.isDown) onClimb = true;
+    else if (!this.onStair || this.jump.isDown) onClimb = false;
+    if(onClimb){
+      this.sprite.body.gravity.y = 0;
+      if (this.cursors.up.isDown){
+        this.sprite.body.velocity.y = -150;
+        this.sprite.animations.play('up');
+      }
+      else if(this.cursors.down.isDown ){
+          this.sprite.body.velocity.y = 150;
+          this.sprite.animations.play('up');
+      }
+      else this.sprite.frame = 10;
     }
+    else this.sprite.body.gravity.y = 500;
 
-    if (this.jump.isDown && this.onGround )
+    if (this.jump.isDown)
     {
-      this.sprite.body.velocity.y = -300;
-      this.sprite.animations.play('jump');
+      if (this.onGround){
+        this.sprite.body.velocity.y = -300;
+        this.sprite.animations.play('jump');
+      }
+      if (onClimb)
+        if (this.cursors.right.isDown || this.cursors.left.isDown){
+          this.sprite.body.velocity.y = -300;
+          this.sprite.animations.play('jump');
+        }
     }
   }
 }
