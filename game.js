@@ -172,9 +172,6 @@ landingPage.Game.prototype ={
       this.sprite.animations.stop();
       this.sprite.frame = 2;
     }
-    if (this.onStair && this.cursors.up.isDown) onClimb = true;
-    if (this.onStair && this.cursors.down.isDown) onClimb = true;
-    else if (!this.onStair || this.jump.isDown) onClimb = false;
     if(onClimb){
       this.sprite.body.gravity.y = 0;
       if (this.cursors.up.isDown){
@@ -192,15 +189,20 @@ landingPage.Game.prototype ={
     if (this.jump.isDown)
     {
       if (this.onGround){
-        this.sprite.body.velocity.y = -300;
+        this.sprite.body.velocity.y = -250;
         this.sprite.animations.play('jump');
       }
       if (onClimb)
         if (this.cursors.right.isDown || this.cursors.left.isDown){
-          this.sprite.body.velocity.y = -300;
+          this.sprite.body.velocity.y = -250;
           this.sprite.animations.play('jump');
         }
     }
+
+    if (this.onStair && this.cursors.up.isDown) onClimb = true;
+    if (this.onStair && this.cursors.down.isDown) onClimb = true;
+    else if (!this.onStair || this.jump.isDown) onClimb = false;
+
   }
 }
 
