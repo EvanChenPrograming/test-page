@@ -105,7 +105,7 @@ landingPage.Menu.prototype ={
 };
 landingPage.Game.prototype ={
   create: function(){
-    this.stage.setBackgroundColor('#000000');
+    this.stage.setBackgroundColor('#5495ff');
     this.game.stage.disableVisibilityChange = true;
     this.map = this.game.add.tilemap('map');
     this.map.addTilesetImage('IIMfront_fixed', 'tileIIM');
